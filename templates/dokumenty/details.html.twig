@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="panel panel-primary">
+    <!-- Default panel contents -->
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Szczegóły dokumentu
+            </h3>
+        </div>
+        <div class="panel-body">
+            
+        </div>
+
+
+        <!-- Table -->
+        <table class="table">
+            <tr>
+            <tr>
+                <th class="col-md-2">Data</th>
+                <th>Faktura</th>
+                <th>Kwota</th>
+                <th class="col-md-2">Rodzaj</th>
+                <th>Uwagi</th>
+            </tr>
+            {% if dokument.kwota < 0 %}
+            <tr class="text-danger">  
+            {% else %}
+            <tr>
+            {% endif %}
+                <td>{{dokument.data | date("Y-m-d")}}</td>
+                <td>{{dokument.faktura}}</td>
+                <td>{{dokument.kwota | number_format(2, ',', ' ')}} zł</td>
+                <td class="text-uppercase">{{dokument.rodzaj}}</td>
+                <td>{{dokument.uwagi}}</td>
+            </tr>
+        </table>
+        
+        <div class="panel-body">
+            <a class="btn btn-default pull-left" style="margin-right: 4px" href="{{ url("dokumenty_index") }}"><span class="glyphicon glyphicon-arrow-left"></span> Powrót</a>
+            <a class="btn btn-primary pull-left" style="margin-right: 4px" href="{{ url("dokumenty_edytuj", {"id": dokument.id})}}"><span class="glyphicon glyphicon-pencil"></span> Edytuj </a>
+
+            {# kasowanie - user nie będzie widział, będzie w bazie #}
+            {{ form_start(form_usun_dokument, {'attr': {'class': 'pull-left', 'style': 'margin-right: 4px'}}) }}
+                {{ form_widget(form_usun_dokument.submit, {'attr': {'class': 'btn-danger' }}) }}
+                {{ form_rest(form_usun_dokument) }}
+            {{ form_end(form_usun_dokument) }}
+            
+            {# kasowanie z bazydanych #}
+            {# {{ form_start(form_delete_dokument, {'attr': {'class': 'pull-left'}}) }}
+                {{ form_widget(form_delete_dokument.submit, {'attr': {'class': 'btn-warning' }}) }}
+                {{ form_rest(form_delete_dokument) }}
+            {{ form_end(form_delete_dokument) }} #}
+
+            <a class="btn btn-primary pull-right" style="margin-right: 4px" href="{{ url("dokumenty_dodaj") }}">
+			<span class="glyphicon glyphicon-plus"></span>Dodaj</a>
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+    
+
+{% endblock %}

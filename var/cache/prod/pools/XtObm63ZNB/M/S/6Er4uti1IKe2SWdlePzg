@@ -1,0 +1,212 @@
+<?php //%255BApp%255CEntity%255CDokument%2524CLASSMETADATA%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+        clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Dokument',
+            ],
+            'namespace' => [
+                'App\\Entity',
+            ],
+            'rootEntityName' => [
+                'App\\Entity\\Dokument',
+            ],
+            'customRepositoryClassName' => [
+                'App\\Repository\\DokumentRepository',
+            ],
+            'identifier' => [
+                [
+                    'id',
+                ],
+            ],
+            'generatorType' => [
+                4,
+            ],
+            'fieldMappings' => [
+                [
+                    'id' => [
+                        'fieldName' => 'id',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'id' => true,
+                        'columnName' => 'id',
+                    ],
+                    'data' => [
+                        'fieldName' => 'data',
+                        'type' => 'datetime',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'data',
+                    ],
+                    'kwota' => [
+                        'fieldName' => 'kwota',
+                        'type' => 'decimal',
+                        'scale' => 2,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 10,
+                        'columnName' => 'kwota',
+                    ],
+                    'faktura' => [
+                        'fieldName' => 'faktura',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 255,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'faktura',
+                    ],
+                    'rodzaj' => [
+                        'fieldName' => 'rodzaj',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 255,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'rodzaj',
+                    ],
+                    'uwagi' => [
+                        'fieldName' => 'uwagi',
+                        'type' => 'text',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'uwagi',
+                    ],
+                    'utworzony' => [
+                        'fieldName' => 'utworzony',
+                        'type' => 'datetime',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'utworzony',
+                    ],
+                    'modyfikacja' => [
+                        'fieldName' => 'modyfikacja',
+                        'type' => 'datetime',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'modyfikacja',
+                    ],
+                    'status' => [
+                        'fieldName' => 'status',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 8,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'status',
+                    ],
+                    'dataShort' => [
+                        'fieldName' => 'dataShort',
+                        'type' => 'datetime',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => true,
+                        'precision' => 0,
+                        'columnName' => 'data_short',
+                    ],
+                ],
+            ],
+            'fieldNames' => [
+                [
+                    'id' => 'id',
+                    'data' => 'data',
+                    'kwota' => 'kwota',
+                    'faktura' => 'faktura',
+                    'rodzaj' => 'rodzaj',
+                    'uwagi' => 'uwagi',
+                    'utworzony' => 'utworzony',
+                    'modyfikacja' => 'modyfikacja',
+                    'status' => 'status',
+                    'data_short' => 'dataShort',
+                ],
+            ],
+            'columnNames' => [
+                [
+                    'id' => 'id',
+                    'data' => 'data',
+                    'kwota' => 'kwota',
+                    'faktura' => 'faktura',
+                    'rodzaj' => 'rodzaj',
+                    'uwagi' => 'uwagi',
+                    'utworzony' => 'utworzony',
+                    'modyfikacja' => 'modyfikacja',
+                    'status' => 'status',
+                    'dataShort' => 'data_short',
+                ],
+            ],
+            'table' => [
+                [
+                    'name' => 'dokument',
+                ],
+            ],
+            'associationMappings' => [
+                [
+                    'owner' => [
+                        'fieldName' => 'owner',
+                        'joinColumns' => [
+                            [
+                                'name' => 'owner_id',
+                                'referencedColumnName' => 'id',
+                            ],
+                        ],
+                        'cascade' => [],
+                        'inversedBy' => 'dokumenty',
+                        'targetEntity' => 'App\\Entity\\User',
+                        'fetch' => 2,
+                        'type' => 2,
+                        'mappedBy' => null,
+                        'isOwningSide' => true,
+                        'sourceEntity' => 'App\\Entity\\Dokument',
+                        'isCascadeRemove' => false,
+                        'isCascadePersist' => false,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                        'sourceToTargetKeyColumns' => [
+                            'owner_id' => 'id',
+                        ],
+                        'joinColumnFieldNames' => [
+                            'owner_id' => 'owner_id',
+                        ],
+                        'targetToSourceKeyColumns' => [
+                            'id' => 'owner_id',
+                        ],
+                        'orphanRemoval' => false,
+                    ],
+                ],
+            ],
+            'idGenerator' => [
+                $o[1],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

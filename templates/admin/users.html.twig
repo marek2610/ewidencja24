@@ -1,0 +1,84 @@
+{% extends 'admin/base2.html.twig' %}
+
+{% block users %}
+
+	<div class="widget-box transparent">
+		<div class="widget-header widget-header-large">
+			<h3 class="widget-title grey lighter">
+				<i class="ace-icon fa fa-users green"></i>
+				Users
+			</h3>
+		</div>
+	</div>
+
+	<table id="simple-table" class="table  table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>User</th>
+				<th>email</th>
+				<th>Ep</th>
+				<th>Imię</th>
+				<th>Nazwisko</th>
+				<th>Znak sprawy</th>
+				<th>
+					<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+					Data utorzenia
+				</th>
+				<th>
+					<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+					Update
+				</th>
+				<th>
+					<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+					Termin
+				</th>
+				<th>Status</th>
+				<th>Akcje</th>
+			</tr>
+		</thead>
+
+		{% for u in users %}
+			<tbody>
+				<tr>
+					<td>{{ loop.index }}</td>
+					<td>{{ u.username }}</td>
+					<td>{{ u.email }}</td>
+					<td>{{ u.ep }}</td>
+					<td>{{ u.imie }}</td>
+					<td>{{ u.nazwisko }}</td>
+					<td>{{ u.znaksprawy }}</td>
+					<td>{{ u.dataUtworzenia | date("Y-m-d") }}</td>
+					<td>{{ u.dataAktualizacji | date("Y-m-d") }}</td>
+					<td>{{ u.dataTermin | date("Y-m-d H:s") }}</td>
+
+					<td class="hidden-480">
+						<span class="label label-xs label-{{ statusTerminStyle(u.dataTermin)}}">{{ statusOpisStyle(u.dataTermin)}}</span>
+					</td>
+
+					<td>
+						<div class="hidden-sm hidden-xs btn-group">
+							<button class="btn btn-xs btn-success">
+								<i class="ace-icon fa fa-check bigger-120"></i>
+							</button>
+
+							<button class="btn btn-xs btn-info">
+								<i class="ace-icon fa fa-pencil bigger-120"></i>
+							</button>
+
+							<button class="btn btn-xs btn-danger">
+								<i class="ace-icon fa fa-trash-o bigger-120"></i>
+							</button>
+
+							<button class="btn btn-xs btn-warning">
+								<i class="ace-icon fa fa-flag bigger-120"></i>
+							</button>
+						</div>
+
+					</td>
+				</tr>
+			</tbody>
+		{% endfor %}
+	</table>
+
+{% endblock %}

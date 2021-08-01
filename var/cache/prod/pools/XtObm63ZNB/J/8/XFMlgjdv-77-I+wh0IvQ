@@ -1,0 +1,152 @@
+<?php //%255BApp%255CEntity%255CMessage%2524CLASSMETADATA%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+        clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Message',
+            ],
+            'namespace' => [
+                'App\\Entity',
+            ],
+            'rootEntityName' => [
+                'App\\Entity\\Message',
+            ],
+            'customRepositoryClassName' => [
+                'App\\Repository\\MessageRepository',
+            ],
+            'identifier' => [
+                [
+                    'id',
+                ],
+            ],
+            'generatorType' => [
+                4,
+            ],
+            'fieldMappings' => [
+                [
+                    'id' => [
+                        'fieldName' => 'id',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'id' => true,
+                        'columnName' => 'id',
+                    ],
+                    'imie' => [
+                        'fieldName' => 'imie',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 50,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'imie',
+                    ],
+                    'nazwisko' => [
+                        'fieldName' => 'nazwisko',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 100,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'nazwisko',
+                    ],
+                    'email' => [
+                        'fieldName' => 'email',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 100,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'email',
+                    ],
+                    'temat' => [
+                        'fieldName' => 'temat',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 10,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'temat',
+                    ],
+                    'message' => [
+                        'fieldName' => 'message',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 255,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'message',
+                    ],
+                    'dataUtworzenia' => [
+                        'fieldName' => 'dataUtworzenia',
+                        'type' => 'datetime',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'data_utworzenia',
+                    ],
+                    'status' => [
+                        'fieldName' => 'status',
+                        'type' => 'boolean',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => true,
+                        'precision' => 0,
+                        'columnName' => 'status',
+                    ],
+                ],
+            ],
+            'fieldNames' => [
+                [
+                    'id' => 'id',
+                    'imie' => 'imie',
+                    'nazwisko' => 'nazwisko',
+                    'email' => 'email',
+                    'temat' => 'temat',
+                    'message' => 'message',
+                    'data_utworzenia' => 'dataUtworzenia',
+                    'status' => 'status',
+                ],
+            ],
+            'columnNames' => [
+                [
+                    'id' => 'id',
+                    'imie' => 'imie',
+                    'nazwisko' => 'nazwisko',
+                    'email' => 'email',
+                    'temat' => 'temat',
+                    'message' => 'message',
+                    'dataUtworzenia' => 'data_utworzenia',
+                    'status' => 'status',
+                ],
+            ],
+            'table' => [
+                [
+                    'name' => 'message',
+                ],
+            ],
+            'idGenerator' => [
+                $o[1],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

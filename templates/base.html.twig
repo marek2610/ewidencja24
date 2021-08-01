@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {% block title %}
+            ...::: E-widencja24 :::...
+            {% endblock %}
+        </title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon_old.ico') }}?v=2" />
+
+        {% block stylesheets %}
+            <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+            <link rel="stylesheet" href="{{ asset('admin/assets/font-awesome/4.5.0/css/font-awesome.min.css') }}" />
+        {% endblock %}
+
+        {# ####skrytp ciasteczka #}
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.min.js"></script> 
+        <script type="text/javascript" src="//ciasteczka.eu/cookiesEU-latest.min.js"></script> 
+        <script type="text/javascript">
+            jQuery(document).ready(function(){
+                jQuery.fn.cookiesEU();
+            });
+        </script>
+        {% block script %}
+        {% endblock %}
+
+
+
+
+    </head>
+    <body style="margin:0; padding:0; height:100%">
+        <div class="container" style="margin-top: 15px">
+            <ul class="nav nav-pills">
+                <li>
+                    <img src="{{ asset('img/logo4.png') }}" alt="E-widencja24.pl" style="margin-right: 4px"/>
+                </li>
+                {% if is_granted("ROLE_USER") %}
+                    {% include ("menuZalogowany.twig") %}
+                {% else %}
+                    {% include ("menuNieZalogowany.twig") %}
+                {% endif %}
+                <li role="presentation" ><a href="{{ url("agro_system") }}">System</a></li>
+                <li role="presentation"><a href="{{ url("agro_kontakt") }}">Kontakt</a></li>
+                {% if is_granted('ROLE_ADMIN') %}
+                     {% include ("menuAdmin.twig") %}
+                {% endif %}
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+        
+        <hr>
+
+
+        <div class="container">
+            <div class="text-center">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success" role="alert">
+                        <strong>Sukces!!! </strong>{{ message }}
+                    </div>          
+                {% endfor %}
+
+                {% for message in app.flashes('error') %}
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Uwaga!!! </strong>{{ message }}
+                    </div>          
+                {% endfor %}
+
+                {% for message in app.flashes('info') %}
+                    <div class="alert alert-info" role="alert">
+                        <strong>Uwaga!!! </strong>{{ message }}
+                    </div>          
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="container" style="min-height: 100%; position:relative; ">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+        {# footer #}
+        {# <div style="position: absolute; left: 0; bottom: 0; width: 100%; text-align: center; ">
+
+            <hr>
+            <p class="text-center">
+                <small>
+                    Uproszczona ewidencja przychodów i rozchodów - 
+                    {% if "now"|date('Y') == 2020 %}
+                        2020
+                    {% else %}
+                        2020 - {{ "now"|date('Y')  }}
+                    {% endif %}
+                    &copy; Copyright by Agro24
+                </small>
+            </p>
+        </div> #}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

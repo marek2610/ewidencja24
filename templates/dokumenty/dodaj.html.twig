@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Dodawanie zdarzenia księgowego</h3>
+        </div>
+        <div class="panel-body">
+        
+        <!-- Table -->
+        <table class="table">
+            {# <tr>
+                <th>Data</th>
+                <th>Kwota</th>
+                <th>Faktura</th>
+                <th>Rodzaj</th>
+                <th>Uwagi</th>
+            </tr> #}
+            {{ form_start(form_dodaj_dokument, {"attr": {"novalidate" : "novalidate"}}) }}
+            <tr>
+                <td>{{ form_row(form_dodaj_dokument.data) }}</td>
+                <td>{{ form_row(form_dodaj_dokument.faktura, {"attr": {"novalidate" : "novalidate"}}) }}</td>
+                <td>{{ form_row(form_dodaj_dokument.kwota) }}</td>
+                <td>{{ form_row(form_dodaj_dokument.rodzaj) }}</td>
+                <td>{{ form_row(form_dodaj_dokument.uwagi) }}</td>
+            </tr>
+        </table>
+
+                {{ form_row(form_dodaj_dokument.dodaj, {"attr": {"class": "btn-success pull-left", "style": "margin-right: 4px"}}) }}
+                <a class="btn btn-default pull-left" href="{{ url("dokumenty_index") }}"><span class="glyphicon glyphicon-arrow-left"></span> Powrót</a>
+            {{ form_end(form_dodaj_dokument) }}
+            <div class="clearfix"></div>
+        </div>
+        {# </table>
+
+        {{ form(form_dodaj_dokument, {"attr": {"novalidate" : "novalidate"}}) }} #}
+    </div>
+
+
+{% endblock %}

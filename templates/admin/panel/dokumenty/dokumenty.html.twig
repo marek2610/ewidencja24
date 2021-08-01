@@ -1,0 +1,77 @@
+{% extends 'admin/base2.html.twig' %}
+
+{% block body %}
+
+<div class="widget-box transparent">
+<div class="widget-header widget-header-large">
+												<h3 class="widget-title grey lighter">
+													<i class="ace-icon glyphicon glyphicon-file  green"></i>
+													Dokumenty
+												</h3>
+											</div>
+											</div>
+
+<table id="simple-table" class="table  table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Data</th>
+			<th>Kwota</th>
+      <th>Faktura</th>
+      <th>Rodzaj</th>
+      <th>Uwagi</th>
+			<th>
+				<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+				Data utorzenia
+			</th>
+			<th>
+				<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+				Modyfikacja
+			</th>
+			<th>Status</th>
+      <th><span class="glyphicon glyphicon-user"></span> User</th>
+			<th>Akcje</th>
+		</tr>
+	</thead>
+
+    {% for d in dokumenty %}
+	<tbody>
+		<tr>
+			<td>{{ loop.index }}</td>
+			<td>{{ d.data | date("Y-m-d") }}</td>
+			<td class='text-right'>{{ d.kwota | number_format(2, ',', ' ') }} zł</td>
+			<td>{{ d.faktura }}</td>
+			<td>{{ d.rodzaj }}</td>
+			<td>{{ d.uwagi }}</td>
+			<td>{{ d.utworzony | date("Y-m-d H:s") }}</td>
+      <td>{{ d.modyfikacja | date("Y-m-d") }}</td>
+			<td class="hidden-480">
+				<span class='label label-sm label-{{ statusStyle(d.status) }}'>{{ d.status }}</span>
+			</td>
+      <td>{{ d.owner.username }}</td>
+			<td>
+				<div class="hidden-sm hidden-xs btn-group">
+					<button class="btn btn-xs btn-success">
+						<i class="ace-icon fa fa-check bigger-120"></i>
+					</button>
+
+					<button class="btn btn-xs btn-info">
+						<i class="ace-icon fa fa-pencil bigger-120"></i>
+					</button>
+
+					<button class="btn btn-xs btn-danger">
+						<i class="ace-icon fa fa-trash-o bigger-120"></i>
+					</button>
+
+					<button class="btn btn-xs btn-warning">
+						<i class="ace-icon fa fa-flag bigger-120"></i>
+					</button>
+				</div>
+
+			</td>
+		</tr>
+	</tbody>
+    {% endfor %}
+</table>
+
+{% endblock %}

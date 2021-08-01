@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Edytowanie zdarzenia księgowego</h3>
+        </div>
+        <div class="panel-body">
+        
+        <!-- Table -->
+        <table class="table">
+            <tr>
+                <th>Data</th>
+                <th>Kwota</th>
+                <th>Faktura</th>
+                <th>Rodzaj</th>
+                <th>Uwagi</th>
+            </tr>
+            {{ form_start(form) }}
+            <tr>
+                <td>{{ form_widget(form.data) }}</td>
+                <td>{{ form_widget(form.kwota) }}</td>
+                <td>{{ form_widget(form.faktura) }}</td>
+                <td>{{ form_widget(form.rodzaj, { 'attr':{'readonly':'1'}}) }}</td>
+                <td>{{ form_widget(form.uwagi) }}</td>
+            </tr>
+        </table>
+
+                <a class="btn btn-default" href="{{ url("dokumenty_index") }}"><span class="glyphicon glyphicon-arrow-left"></span> Powrót</a>
+                {{ form_widget(form.dodaj, {"attr": {"class": "btn-success"}}) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+
+{% endblock %}

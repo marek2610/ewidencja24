@@ -1,0 +1,184 @@
+{% extends 'admin/base2.html.twig' %}
+
+{% block body %}
+
+	<div class="col-xs-12">
+
+		<!-- PAGE CONTENT BEGINS -->
+		<div class="tab-content no-border padding-24">
+			<div id="home" class="tab-pane active">
+				<div class="row">
+					<div class="col-xs-12 col-sm-3 center">
+						<span class="profile-picture">
+							<img class="editable img-responsive" alt="Alex's Avatar" src="{{ asset('admin/assets/images/avatars/profile-pic.jpg') }}">
+						</span>
+
+						<div class="space space-4"></div>
+
+						<a href="#" class="btn btn-sm btn-block btn-primary" disabled>
+							<i class="ace-icon fa fa-envelope-o bigger-110"></i>
+							<span class="bigger-110">Send a message</span>
+						</a>
+					</div>
+					<!-- /.col -->
+
+					<div class="col-xs-12 col-sm-9">
+					
+						<h4 class="blue">
+							<span class="middle">{{ user.nazwisko }} {{ user.imie }}</span>
+						</h4>
+
+
+						<div class="profile-user-info">
+							<div class="profile-info-row">
+								<div class="profile-info-name">
+									Username
+								</div>
+
+								<div class="profile-info-value">
+									<span>{{ user.username }}</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name">
+									Nazwisko
+								</div>
+
+								<div class="profile-info-value">
+									<span>{{ user.nazwisko }}</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name">
+									Imię
+								</div>
+
+								<div class="profile-info-value">
+									<span>{{ user.imie }}</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name">
+									EP Producenta
+								</div>
+
+								<div class="profile-info-value">
+									<span>{{ user.ep }}</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name">
+									Znak sprawy
+								</div>
+
+								<div class="profile-info-value">
+									<span>{{ user.znaksprawy }}</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name">
+									Data utworzenia
+								</div>
+
+								<div class="profile-info-value">
+									<span>{{ user.dataUtworzenia | date("Y-m-d") }}</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name">
+									Znak sprawy
+								</div>
+
+								<div class="profile-info-value">
+									<span>{{ user.dataAktualizacji | date("Y-m-d") }}</span>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name">
+									Znak sprawy
+								</div>
+
+								<div class="profile-info-value">
+									<span>{{ user.dataTermin | terminKonta }}</span>
+								</div>
+							</div>
+
+
+							<div class="profile-info-row">
+								<div class="profile-info-name">
+									email
+								</div>
+
+								<div class="profile-info-value">
+									<a href="#" >{{ user.email }}</a>
+								</div>
+							</div>
+
+							<div class="profile-info-row">
+								<div class="profile-info-name">
+									
+								</div>
+
+								<div class="profile-info-value">
+									<button class="btn btn-danger btn-sm" onclick="window.location='{{ url('admin_users') }}'">
+										<i class="ace-icon fa fa-reply icon-only"></i>
+									</button>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+					<!-- /.col -->
+				</div>
+				<!-- /.row -->
+
+				<div class="space-20"></div>
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-6">
+						<div class="widget-box transparent">
+							<div class="widget-header widget-header-small">
+								<h4 class="widget-title smaller">
+									<i class="ace-icon fa fa-check-square-o bigger-110"></i>
+									Zestawienie faktur
+								</h4>
+							</div>
+
+							<div class="widget-body">
+								<div class="widget-main">
+									<p>
+										My job is mostly lorem ipsuming and dolor sit ameting as long as consectetur adipiscing elit.
+									</p>
+									<p>
+										Sometimes quisque commodo massa gets in the way and sed ipsum porttitor facilisis.
+									</p>
+									<p>
+										The best thing about my job is that vestibulum id ligula porta felis euismod and nullam quis risus eget urna mollis ornare.
+									</p>
+									<p>
+										Thanks for visiting my profile.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /#home -->
+
+		</div>
+
+
+	</div>
+
+
+{% endblock %}
+

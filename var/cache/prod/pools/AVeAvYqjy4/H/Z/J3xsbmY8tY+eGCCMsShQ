@@ -1,0 +1,58 @@
+<?php //%255BApp%255CEntity%255CMessage%2524imie%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\Column'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\Column')),
+        clone ($p['Symfony\\Component\\Validator\\Constraints\\NotBlank'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\NotBlank')),
+        clone ($p['Symfony\\Component\\Validator\\Constraints\\Length'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Length')),
+        clone ($p['Symfony\\Component\\Validator\\Constraints\\Regex'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Regex')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'length' => [
+                50,
+            ],
+            'message' => [
+                1 => 'Pole nie może być puste.',
+                3 => 'Imię posiada niedozwolony znak',
+            ],
+            'groups' => [
+                1 => [
+                    'Default',
+                ],
+                [
+                    'Default',
+                ],
+                [
+                    'Default',
+                ],
+            ],
+            'maxMessage' => [
+                2 => 'Your first name cannot be longer than {{ limit }} characters',
+            ],
+            'minMessage' => [
+                2 => 'Imię powinno mieć minimum {{ limit }} znaki długości',
+            ],
+            'max' => [
+                2 => 50,
+            ],
+            'min' => [
+                2 => 3,
+            ],
+            'pattern' => [
+                3 => '/\\d/',
+            ],
+            'match' => [
+                3 => false,
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+        $o[2],
+        $o[3],
+    ],
+    []
+); }];

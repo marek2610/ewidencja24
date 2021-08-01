@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="panel panel-primary">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            Dane użytkownika
+        </h3>
+    </div>
+    <div class="panel-body">
+
+        <table class="table">
+            {% for u in user %}
+            <tr>
+                <th class="col-md-3">Użytkownik</td>
+                <td>: {{u.username}}</td>
+            </tr>
+            <tr>
+                <th class="col-md-3">Email</td>
+                <td>: {{u.email}}</td>
+            </tr>
+            <tr>
+                <th class="col-md-3">Imię</td>
+                <td>: {{u.imie}}</td>
+            </tr>
+            <tr>
+                <th class="col-md-3">Nazwisko</td>
+                <td>: {{u.nazwisko}}</td>
+            </tr>
+            <tr>
+                <th class="col-md-3">EP Producenta</td>
+                <td>: {{u.ep}}</td>
+            </tr>
+            <tr>
+                <th class="col-md-3">Znak sprawy</td>
+                <td>: {{u.znaksprawy}}</td>
+            </tr>
+            <tr>
+                <th class="col-md-3">Data ważności konta</td>
+                <td>: {{u.datatermin | date("Y-m-d H:i:s")}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!-- List group -->
+        <ul class="list-group">
+            <li class="list-group-item">W celu modyfikacji hasła skontaktuj się z administratorem.</li>
+            <li class="list-group-item">
+                <a class="btn btn-default" href="{{ url("dokumenty_index")}}"><span class="glyphicon glyphicon-arrow-left"></span> Powrót</a>
+                <a class="btn btn-primary" href="{{ url("dokumenty_useredit")}}"><span class="glyphicon glyphicon-pencil"></span> Edytuj</a>
+                <a class="btn btn-primary" href="{{ url("payment_index")}}"><span class="fa fa-university"></span> Płatność</a>
+
+            </li>
+        </ul>
+    </div>
+
+</div>
+  
+{% endblock body %}

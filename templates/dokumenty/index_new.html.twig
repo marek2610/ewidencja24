@@ -1,0 +1,164 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div
+		class="panel panel-primary">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+			{% for ui in userinfo %}
+				<h3 class="panel-title pull-left">Ewidencja przychodów i rozchodów
+				</h3>
+				<h3 class="panel-title pull-right ">
+
+					Data ważności konta:
+					{{ ui.dataTermin | terminKonta }}
+					{{ panelStyle(ui.dataTermin) }}
+				</h3>
+				<div class="clearfix"></div>
+			</div>
+
+
+			<div class="panel-body">
+				<table class="table">
+					<tr>
+						<td class="col-md-3">EP Producenta</td>
+						<td>:
+							{{ ui.ep }}</td>
+					</tr>
+					<tr>
+						<td class="col-md-3">Beneficjent</td>
+						<td>:
+							{{ ui.nazwisko }}
+							{{ ui.imie }}</td>
+					</tr>
+					<tr>
+						<td class="col-md-3">Znak sprawy</td>
+						<td>:
+							{{ ui.znaksprawy }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+
+
+			<!-- List group -->
+			<ul class="list-group">
+				<li class="list-group-item">
+					<a class="btn btn-primary pull-left" style="margin-right: 4px" href="{{ url("dokumenty_dodaj") }}">
+						<span class="glyphicon glyphicon-plus"></span>
+						Dodaj</a>
+					{# <a class="btn btn-default pull-left" href="{{ url("dokumenty_dane") }}">
+											<span class="glyphicon glyphicon-list-alt"></span>
+											Dane miesięczne</a> #}
+					<a href="{{ url("dokumenty_zbiorcze") }}" class="btn btn-default pull-left">
+						<span class="glyphicon glyphicon-download-alt"></span>
+						Generuj zestawienie</a>
+
+					<!-- SearchForm by Controler -->
+					{{ render(controller(
+                            'App\\Controller\\DokumentyController::searchBar'
+                        )) }}
+					<div class="clearfix"></div>
+
+				</li>
+			</ul>
+		</div>
+
+		<!-- Table -->
+		<table class="table">
+			<tr>
+				<th>Lp.</th>
+				<th class="col-md-2">{{ knp_pagination_sortable(pagination, 'Data', 'data')}}</th>
+				<th class="col-md-2">{{ knp_pagination_sortable(pagination, 'Faktura', 'faktura')}}</th>
+				<th colspan="2" class="col-md-2 text-center">{{ knp_pagination_sortable(pagination, 'Kwota', 'kwota')}}</th>
+				<th class="col-md-2">{{ knp_pagination_sortable(pagination, 'Rodzaj', 'rodzaj')}}</th>
+				<th class="col-md-2">{{ knp_pagination_sortable(pagination, 'Uwagi', 'uwagi')}}</th>
+				<th class="col-md-2">Akcje</th>
+			</tr>
+			{% for dokument in pagination %}
+				<tr>
+					<td>{{ loop.index }}.</td>
+					<td>{{ dokument.data | date("Y-m-d") }}</td>
+					<td>{{ dokument.faktura }}</td>
+
+					<!-- podział kwoty na komórki: lewa dodatnia, prawa ujemna -->
+					{% if dokument.kwota < 0 %}
+						<td></td>
+						<td class="text-danger text-right">{{ dokument.kwota | number_format(2, ',', ' ') }}
+							zł</td>
+					{% else %}
+						<td class="text-right">{{ dokument.kwota | number_format(2, ',', ' ') }}
+							zł</td>
+						<td></td>
+					{% endif %}
+
+					<td class="text-uppercase">{{ dokument.rodzaj }}</td>
+					<td>{{ dokument.uwagi }}</td>
+					<td>
+						<a href="{{ url("dokumenty_details", {"id": dokument.id}) }}">
+							<button type="button" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-search"></span>
+								Info</button>
+						</a>
+						<a href="{{ url("dokumenty_edytuj", {"id": dokument.id})}}">
+							<button type="button" class="btn btn-primary btn-sm">
+								<span class="glyphicon glyphicon-pencil"></span>
+								Edytuj</button>
+						</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">Brak wpisów księgowych</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+
+	<!-- Default panel contents -->
+	<div class="panel panel-primary">
+		<div class="panel-heading">Podsumowanie - wszystkiw wpisy</div>
+		<table class="table">
+			<tr class="text-right">
+				{% for q in sumaWszystkie %}
+					<td class="col-md-2">
+						<strong>Razem</strong>
+					</td>
+					<td class="col-md-2">
+						<strong>{{ q.1 | number_format(2, ',', ' ')}}
+							zł</strong>
+					</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				{% endfor %}
+			</tr>
+			{% for q2 in sumaRodzaj %}
+				{% if q2.1 < 0 %}
+					<tr class="text-right text-danger">
+					{% else %}
+						<tr class="text-right">
+						{% endif %}
+						<td class="col-md-2">{{ q2.rodzaj}}</td>
+						<td class="col-md-2">{{ q2.1 | number_format(2, ',', ' ')}}
+							zł</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+		<div class="navigation text-center">
+			{{ knp_pagination_render(pagination) }}
+		</div>
+
+	{% endblock %}
+

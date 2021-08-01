@@ -1,0 +1,193 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheet %}
+	{# fontsawsome #}
+		<link href="{{ asset('fonts/fontawesome/css/all.min.css') }}" rel="stylesheet" type="text/css">
+		<link href="{{ asset('fonts/fontawesome/css/brands.min.css') }}" rel="stylesheet" type="text/css">
+		<link href="{{ asset('fonts/fontawesome/css/fontawesome.min.css') }}" rel="stylesheet" type="text/css">
+		<link href="{{ asset('fonts/fontawesome/css/regular.min.css') }}" rel="stylesheet" type="text/css">
+		<link href="{{ asset('fonts/fontawesome/css/solid.min.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block script %}
+	{# skrypt zakładki #}
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/javascript">
+		$(function () {
+		$("#tabs").tabs();
+	});
+	</script>
+
+{% endblock %}
+
+
+{% block body %}
+<div class="panel panel-primary">
+	<!-- Default panel contents -->
+	<div class="panel-heading">
+		<h3 class="panel-title">
+			Forma płatności
+		</h3>
+	</div>
+	<div class="panel-body">
+
+		
+		<!-- List group -->
+		<ul id="tabs" class="list-group">
+			<li class="list-group-item">
+				<div>
+					<p class="alert alert-danger">
+						<strong>
+							Uwaga!!!
+						</strong>Opłata abonamentowa za jeden pełny roku użytkowania wynosi
+						<strong>
+							100,00 PLN
+						</strong>.
+					</p>
+
+					<ul class="nav nav-tabs" role="tablist">
+						<li class="active">
+							<a class="" href="#tabs-1">
+								<i class="fa fa-university"></i>
+								Przelew oline</a>
+						</li>
+						<li >
+							<a class="" href="#tabs-2">
+								<i class="fa fa-credit-card"></i>
+								Karta kredytowa</a>
+						</li>
+						<li>
+							<a class="" href="#tabs-3">
+								<i class="fa fa-paypal"></i>
+								Online</a>
+						</li>
+					</ul>
+
+
+					<div class="tab-content">
+						<div id="tabs-1">
+							<table class="table" style="margin-top: 15px">
+								<tr>
+									<th>BANK:</th>
+									<td>ING BANK ŚLĄSKI</td>
+								</tr>
+								<tr>
+									<th>Numer rachunku bankowego</th>
+									<td>55 1050 1979 1000 0090 6670 3290</td>
+								</tr>
+								<tr>
+									<th>IBAN:</th>
+									<td>PL 55 1050 1979 1000 0090 6670 3290</td>
+								</tr>
+								<tr>
+									<th>Kod BIC SWIFT:</th>
+									<td>INGBPLPW</td>
+								</tr>
+								<tr>
+									<th>Tytuł przelewu:</th>
+									<td>EP {{ user.ep }} {{ user.nazwisko }} {{ user.imie }}</td>
+								</tr>
+							</table>
+
+							<p class="alert alert-info">
+								<strong>Ważne!!!
+								</strong>Opłata abonamentu przelewem tradycyjnym nie generuje dodatkowych kosztów po stronie Użytkownika. Po zrealizowaniu przelewu proszę o kontakt z administratorem w celu przyspieszenia wryfikacji.</p>
+						</div>
+
+						<div id="tabs-2">
+							<div style="margin-top: 15px">
+								<p class="alert alert-info text-center"> Opcja przelewu za pomocą karty kredytowej obecnie niedostępna</p>
+							</div>
+
+							<form role="form">
+								<div class="form-group">
+									<label for="username">Imię i nazwisko (umieszczone na karcie)</label>
+									<input type="text" class="form-control" name="username" placeholder="" required="" disabled>
+								</div>
+								<!-- form-group.// -->
+
+								<div class="form-group">
+									<label for="cardNumber">Numer karty kredytowej</label>
+									<div class="input-group">
+										<input type="text" class="form-control" name="cardNumber" placeholder="" disabled>
+										<div class="input-group-addon">
+											<span class="input-group-text text-muted">
+												<i class="fa fa-cc-visa"></i>
+												<i class="fa fa-cc-amex"></i>
+												<i class="fa fa-cc-mastercard"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<!-- form-group.// -->
+
+								<div class="row" >
+									<div class="col-sm-8">
+										<div class="form-group" >
+											<label>
+												<span class="hidden-xs">Ważność</span>
+											</label>
+											<div class="input-group" >
+												<input type="number" class="form-control" placeholder="MM" name="" disabled>
+												<input type="number" class="form-control" placeholder="YY" name="" disabled>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										<div class="form-group">
+											<label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV
+												<i class="fa fa-question-circle" data-toggle="tooltip" title="Kod CVV/CVC (Card Verification Value/Code) znajduje się na odwrocie karty kredytowej po prawej stronie w białym pasku podpisu i są to zawsze ostatnie 3 cyfry dla kart VISA i MasterCard."></i>
+											</label>
+											<input type="number" class="form-control" required="" disabled>
+										</div>
+										<!-- form-group.// -->
+									</div>
+								</div>
+								<!-- row.// -->
+								<button class="subscribe btn btn-primary btn-block" type="button" disabled>
+									Potwierdź
+								</button>
+							</form>
+						</div>
+
+						<!-- tab-pane.// -->
+						<div id="tabs-3">
+							<p style="margin-top: 15px" class="alert alert-info text-center">Opcja przelewu za pomocą Paypal obecnie niedostępna.</p>
+							<p>Paypal is easiest way to pay online</p>
+							<p>
+								<button type="button" class="btn btn-primary" disabled>
+									<i class="fa fa-paypal"></i>
+									Paypal
+								</button>
+							</p>
+							<p class="alert alert-info">
+								<strong>Ważne!!!</strong>
+								Ze względu na dodatkowe opłaty naliczane przez operatora płatności elektronicznych, kwota bazowa zostanie powiększona o 15,00 zł. Co łącznie daje 115,00 zł opłaty abonamentowej.
+							</p>
+						</div>
+
+						<!-- tab-pane.// -->
+					</div>
+				</div>
+				<div class="col-md-3"></div>
+			</li>
+		</ul>
+
+		<div>
+			<!-- List group -->
+			<ul class="list-group">
+				<li class="list-group-item">
+					<a class="btn btn-default" href="{{ url("dokumenty_index")}}">
+						<span class="glyphicon glyphicon-arrow-left"></span>
+						Powrót</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error.messageKey }}
+    </div>
+    {% endif %}
+    
+    
+    <div class="panel panel-primary">
+  <!-- Default panel contents -->
+    <div class="panel-heading">
+        <h4>
+            Logowanie
+        </h4>
+    </div>
+  <div class="panel-body">
+    
+    <form action="{{ path('login') }}" method="post">
+        <div class="form-group">
+            <label for="usr">Użytkownik:</label>
+            <input type="text" class="form-control" id="usr" name="_username" value="{{ lastUsername }}" placeholder="Użytkownik">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Hasło:</label>
+            <input type="password" class="form-control" id="pwd" name="_password" placeholder="Hasło">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-check"></span> Login</button>
+        </div>
+    </form>
+
+    <p>Rejestracja oznacza akceptację <a href="#">Regulaminu & Polityki Prywatności</a>.</p>
+    <p>Nie posiadasz konta? <a href="{{ url("register") }}">Zarejestruj się.</a></p>
+
+  </div>
+  <!-- /.container -->
+    
+
+</div>
+
+{# #################### #}
+
+
+{% endblock %}

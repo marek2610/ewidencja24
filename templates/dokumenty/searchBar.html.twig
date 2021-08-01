@@ -1,0 +1,21 @@
+{{ form_start(form_search, {
+    'attr': {
+        'novalidate' : 'novalidate', 
+        'class' : 'pull-right'
+        },  
+    'action': path('dokumenty_index'),
+    }) 
+}}
+    <div class="input-group">
+        <div class="input-group">
+            {{ form_widget(form_search.query) }}
+            <span class="input-group-btn">
+                {{ form_widget(form_search.szukaj) }}
+            </span>
+        </div>
+        <div class="clearfix"></div>
+    </div><!-- /input-group -->
+
+    {{ form_rest(form_search)}}
+
+{{ form_end(form_search) }}

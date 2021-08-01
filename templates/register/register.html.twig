@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div
+		class="panel panel-primary">
+		<!-- Default panel contents -->
+		<div class="panel-heading">
+			<h4>
+				Rejestracja
+			</h4>
+		</div>
+		<div class="row">
+			<div class="panel-body">
+				<div class="col-md-3">
+                </div>
+				<div class="form-group col-md-6">
+					<div class="form-row">
+						{{ form_start(form_register, {"attr": {"novalidate" : "novalidate"}}) }}
+						<div class="form-group">
+							{{ form_row(form_register.username)}}
+						</div>
+						<div class="form-group ">
+							{{ form_row(form_register.email)}}
+						</div>
+						<div class="form-group ">
+							{{ form_row(form_register.password.first)}}
+						</div>
+						<div class="form-group ">
+							{{ form_row(form_register.password.second)}}
+						</div>
+						<div class="form-group ">
+							{{ form_row(form_register.ep)}}
+						</div>
+						<div class="form-group ">
+							{{ form_row(form_register.imie)}}
+						</div>
+						<div class="form-group ">
+							{{ form_row(form_register.nazwisko)}}
+						</div>
+						<div class="form-group ">
+							{{ form_row(form_register.znaksprawy)}}
+						</div>
+						<div class="form-group text-justify">
+							<small>
+								Rejestrując się, wyrażasz zgodę na nasz
+								<a href="{{ asset('pdf/Regulamin_systemu_e-widencja24.pl.pdf')}}">Regulamin</a>
+								i na otrzymywanie e-maili oraz aktualizacji E-widencja24. Potwierdzasz również, że przeczytałeś/aś naszą
+								<a href="{{ asset('pdf/Polityka_prywatnosci_e-widencja24.pl.pdf')}}">Politykę Prywatności</a> oraz <a href="{{ asset('pdf/Klauzula_informacyjna_systemu_e-widencja24.pl.pdf')}}">Kaluzulę informacyjną </a>. Zgadzasz się także na użycie plików cookie przez E-widencja24, aby zapewnić pozytywne wrażenia użytkownikom.
+							</small>
+						</div>
+					</div>
+					<div class="form-row">
+						{{ form_row(form_register.submit)}}
+						{{ form_row(form_register.reset)}}
+					</div>
+					{{ form_end(form_register) }}
+					<div class="form-row">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

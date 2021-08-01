@@ -1,0 +1,106 @@
+easy_admin:
+    site_name: 
+        'Agro24 - <em style="font-size: 80%;">Uproszczona ewidencja przychodów i rozchodów</em>'
+
+    user:
+        display_name: true      #pokazuje pole z nazwą użytkownika, nie samą nazwę usera
+        display_avatar: true    #pokazuje avatar użytkownika
+        name_property_path: 'fullname'  #pokazuje nazwę użytkownika
+    
+    list:
+        max_results: 10
+    
+    formats:
+        date:     'Y/m/d'
+        time:     'H:i'
+        datetime: 'Y/m/d H:i:s'
+        number: '%.2f'
+        
+
+    design:
+        
+        menu:
+            - label: 'Entieties'
+            - { entity: 'Dokument', label: 'Dokumenty',icon: 'th-list' }
+            - { entity: 'Message', label: 'Message', icon: 'th-list' }
+
+            - label: 'Settings'
+            - { entity: 'User', label: 'Użytkownicy',icon: 'user' }
+
+    entities:
+        Message:
+            class: App\Entity\Message
+            label: 'Wiadomości'
+            disabled_actions: ['new']
+            list: 
+                fields: 
+                    - id
+                    - imie
+                    - nazwisko
+                    - { property: 'email', type: 'email' }
+                    - temat
+                    - status
+                    - { property: 'data_utworzenia', type: date }
+
+            # form:
+            #     fields:
+            #         - {type: 'group', icon: 'pencil', label: 'Nadawca', css_class: 'col-lg-6'}
+            #         - 'imie'
+            #         - 'nazwisko'
+            #         - {type: 'group', icon: 'th-list', label: 'Dane', css_class: 'col-lg-6'}
+            #         - 'email'
+            #         - 'temat'
+
+            #         - {type: 'group', icon: 'th-list', label: 'Treść wiadomości', css_class: 'col-lg-12'}
+            #         - { property: 'message', type: 'text-editor' }
+
+            #     collapse_actions: false
+            #     actions: ['edit', 'delete']
+            #     batch_actions: ['delete']
+            #     title: 'Lista wiadomości'
+            #     filters: ['imie', 'nazwisko', 'email', 'temat', 'status']
+            edit:
+                help: 'Tekst pod nagłówkiem'  
+                fields:
+                    - '-data_utworzenia'
+                    
+        Dokument:
+            class: App\Entity\Dokument
+            help: 'Zestawienie wszystkich dokumentów'
+            label: Dokument
+            list: 
+                sort: 'data'
+                filters: ['data', 'kwota', 'rodzaj']
+                fields: 
+                    - id
+                    - { property: 'data', type: date }
+                    - kwota
+                    - faktura
+                    - rodzaj
+                    - uwagi
+                    - { property: 'utworzony', type: date }
+                    - { property: 'modyfikacja', type: date }
+            new:
+                    title:  'Dodaj dokument'
+                    form_options: { validation_groups: ['Default', 'Dokument'] }
+            edit:
+                    title:  'Edytuj dokument'
+                    form_options: { validation_groups: ['Default'] }
+            
+            form:
+                title: 'Dodaj dokument'
+                form_options: { validation_groups: ['Default'] }
+                fields:
+                   - { type: 'group', icon: 'pencil', label: 'Dane', css_class: 'col-lg-6'}
+                   - { property: 'data', label: 'Data', type: date }
+                #    - { property: 'kwota', label: 'Kwota', format: '%01.2f', css_class: 'col-lg-4'}
+                #   Unable to transform data for property path "kwota": Expected a numeric string.
+                   - { property: 'faktura', label: 'Faktura', css_class: 'col-lg-4'}
+                   - { property: 'rodzaj', label: 'Rodzaj', css_class: 'col-lg-4'}
+                   - { property: 'uwagi', label: 'Uwagi'}
+                   - { type: 'group', icon: 'pencil', label: 'Administracja', css_class: 'col-lg-6', }
+                   - { property: 'utworzony', label: 'Utworzony', type: date, css_class: 'col-lg-6',}
+                   - { property: 'modyfikacja', label: 'Modyfikacja', type: date, css_class: 'col-lg-6', }
+        User:
+            class: App\Entity\User
+            disabled_actions: ['new']

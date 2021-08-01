@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+  <div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Strona testowa bez powiązania</div>
+
+  <!-- Table -->
+  <table class="table">
+		<tr>
+			<th class="col-md-1">#</th>
+			<th class="col-md-3">Rok / Miesiąc</th>
+			<th class="col-md-3">Bilans</th>
+			<th class="col-md-3">Rodzaj</th>
+			<th class="col-md-3">Akcja</th>
+		</tr>
+
+{% for d in query  %}
+        <tr>
+          <td>{{loop.index}}</td>
+          <td>
+						<a href="{{ url('dokumenty_test_2', {'data': d.data} ) }}">
+							{{d.data}}
+						</a>
+          </td>
+          <td>{{d.1 | number_format(2, ',', ' ') }}</td>
+          {# <td>{{d.2}}</td> #}
+					<td></td>
+					<td>
+						<a href="">
+							<button type="button" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-search"></span>
+								Info
+							</button>
+						</a>
+					 	<a href="#" class="btn btn-default btn-sm" disabled><span class="glyphicon glyphicon-download-alt"></span> Pobierz</a>
+					</td>
+        </tr>
+{% endfor %}
+        
+  </table>
+</div>
+
+
+{% endblock %}

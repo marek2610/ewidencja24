@@ -1,0 +1,112 @@
+{% extends 'admin/base2.html.twig' %}
+
+{% block body %}
+
+	<div
+		class="col-xs-12">
+
+		<!-- PAGE CONTENT BEGINS -->
+	<div class="form-horizontal">
+	
+		{{ form_start(form_admin_dodaj_user, {"attr": {"novalidate" : "novalidate"}}) }}
+		<form class="" role="form">
+			<div class="form-group">
+				<div class="col-sm-3 text-right">
+					{{ form_label(form_admin_dodaj_user.username) }}
+				</div>
+
+				<div class="col-sm-4">
+					{{ form_widget(form_admin_dodaj_user.username) }}
+				</div>
+			</div>
+
+			<div class="form-group">		
+				<div class="col-sm-3 text-right">
+					{{ form_label(form_admin_dodaj_user.password.first, null, { 'attr': {'class': 'form-label'} }) }}
+				</div>
+
+				<div class="col-sm-4">
+					{{ form_widget(form_admin_dodaj_user.password.first, { 'attr': {'class': 'form-input'} }) }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-3 text-right">
+					{{ form_label(form_admin_dodaj_user.password.second, null, { 'attr': {'class': 'form-label'} }) }}
+				</div>
+
+				<div class="col-sm-4">
+					{{ form_widget(form_admin_dodaj_user.password.second, { 'attr': {'class': 'form-input'} }) }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-3 text-right">
+					{{ form_label(form_admin_dodaj_user.email) }}
+				</div>
+
+				<div class="col-sm-4">
+					{{ form_widget(form_admin_dodaj_user.email) }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-3 text-right">
+					{{ form_label(form_admin_dodaj_user.ep) }}
+				</div>
+
+				<div class="col-sm-4">
+					{{ form_widget(form_admin_dodaj_user.ep) }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-3 text-right">
+					{{ form_label(form_admin_dodaj_user.imie) }}
+				</div>
+
+				<div class="col-sm-4">
+					{{ form_widget(form_admin_dodaj_user.imie) }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-3 text-right">
+					{{ form_label(form_admin_dodaj_user.nazwisko) }}
+				</div>
+
+				<div class="col-sm-4">
+					{{ form_widget(form_admin_dodaj_user.nazwisko) }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-3 text-right">
+					{{ form_label(form_admin_dodaj_user.znaksprawy) }}
+				</div>
+
+				<div class="col-sm-4">
+					{{ form_widget(form_admin_dodaj_user.znaksprawy) }}
+				</div>
+			</div>
+
+			{# {{ form_row(form_admin_dodaj_user.password) }} #}
+
+			{{ form_rest(form_admin_dodaj_user) }}
+
+			<div class="clearfix">
+				{{ form_label(form_admin_dodaj_user.reset) }}
+				{{ form_label(form_admin_dodaj_user.submit) }}
+				
+			</div>
+
+
+		</form>
+			{{ form_end(form_admin_dodaj_user) }}
+			</div>
+		<div class="hr hr-24"></div>
+	</div>
+
+
+{% endblock %}
+

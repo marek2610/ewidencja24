@@ -1,0 +1,149 @@
+{% extends 'base.html.twig' %}
+
+        {% block stylesheets %}
+            <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+            <link rel="stylesheet" href="{{ asset('admin/assets/font-awesome/4.5.0/css/font-awesome.min.css') }}" />
+        {% endblock %}
+
+{% block body %}
+
+  {% if error %}
+    <div class="container alert alert-danger" role="alert">
+      <strong>Uwaga!!! </strong>{{ error.messageKey | trans(error.messageData, 'security') }}
+    </div>
+  {% endif %}
+
+  <header class="container bg-primary">
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="display-4 text-white mt-5 mb-2"><img src="{{ asset('img/logo.png') }}" alt="E-widencja24"/></span> E-widencja24</h2>
+        <p class="lead mb-5 text-white-50">Dedykowana aplikacja do obsługi księgowej gospodarstw rolnych i rybackich</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mb-5">
+        <h2>Uproszczona ewidencja przychodów i rozchodów</h2>
+        <hr>
+        <p align="justify">Wychodząc na przeciw oczekiwaniom beneficjentów Programu Rozwoju Obszarów Wiejskich 2014-2020 - PROW 2014-2020 oraz Programu Operacyjnego "Rybactwo i Morze" na lata 2014-2020 - PO RYBY 2014-2020 stworzono aplikację do ewidencjonowania zdarzeń księgowych w gospodarstwie.</p>
+        <p align="justify">Aplikacja przeznaczona jest dla uczestników programów obsługiwanych przez Agencję Restrukturyzacji i Modernizacji Rolnictwa oraz pozostałych podmiotów chcących ewidencjonować wszystkie zdarzenia księgowe dla własnych potrzeb.</p>
+
+        {# <small>
+          <p style="margin-top:10px">
+            Rejestrując się, wyrażasz zgodę na nasz <a href="#">Regulamin</a> i na otrzymywanie e-maili oraz aktualizacji E-widencja24. Potwierdzasz również, że przeczytałeś/aś naszą <a href="#">Politykę Prywatności</a>. Zgadzasz się także na użycie plików cookie przez E-widencja24, aby zapewnić pozytywne wrażenia użytkownikom.
+          </p>
+        </small> #}
+
+        <a class="btn btn-primary btn-lg" href="{{ url("register") }}">Rejestracja &raquo;</a>
+      </div>
+
+      <div class="col-md-4 mb-5">
+        <h2>Login</h2>
+        <hr>
+        <div class="row">
+          <div class="col-md-12">
+            <form action="{{ path('login') }}" method="post">
+
+              {# formularz logowania z lebelami #}
+              <div class="form-group">
+                {# <label for="usr">Użytkownik:</label> #}
+                <input type="text" class="form-control" id="usr" name="_username" value="{{ lastUsername }}" placeholder="Użytkownik">
+              </div>
+
+              <div class="form-group">
+                {# <label for="pwd">Hasło:</label> #}
+                <input type="password" class="form-control" id="pwd" name="_password" placeholder="Hasło">
+              </div>
+
+
+              {# formularz logowania z ikonami #}
+              {# <div style="margin-bottom: 15px" class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-user"></i>
+                </span>
+                <input id="usr" type="text" class="form-control" name="_username" value="{{ lastUsername }}" placeholder="Użytkownik">
+              </div>
+
+              <div style="margin-bottom: 15px" class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-lock"></i>
+                </span>
+                <input id="pwd" type="password" class="form-control" name="_password" placeholder="Hasło">
+              </div> #}
+
+
+
+              <div class="form-group ">
+                <small>
+                  <input type="checkbox" id="remember_me" name="_remember_me" checked/>
+                  <label for="remember_me">Zapamiętaj mnie</label>
+                </small>
+                <button type="submit" class="btn btn-success pull-right">
+                  <span class="glyphicon glyphicon-check"></span>
+                  Login
+                </button>
+              </div>
+              <div>
+                {# <small>
+                  Nie posiadasz konta?<a href="{{ url("register") }}">Zarejestruj się.</a>
+                </small> #}
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+
+    <div class="row" style="margin-top:20px">
+      <div class="col-md-4 mb-5">
+        <div class="thumbnail">
+          <img src="{{ asset('img/agro24_index01.jpg') }}" alt="">
+          <div class="caption">
+            <h4><strong> Prosta obsługa</strong></h4>
+            <p align="justify">Funkcjonalność aplikacji oparta jest na intuicji i nie wymaga specjalistycznej wiedzy. Zarządzanie jest w pełni zautomatyzowane.</p>
+          </div>
+          <p>
+            <a href='{{ url("register") }}' class="btn btn-primary">Dowiedz się więcej!</a>
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="thumbnail">
+          <img src="{{ asset('img/agro24_index03.jpg') }}" alt="">
+          <div class="caption">
+            <h4><strong> Generowanie raportów</strong></h4>
+            <p align="justify">Łatwość tworzenia raportów pozwoli na szybką analizę oraz obsługę dokumentacji w wersji elektronicznej.</p>
+          </div>
+          <p>
+            <a href='{{ url("register") }}' class="btn btn-primary">Dowiedz się więcej!</a>
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="thumbnail">
+          <img src="{{ asset('img/agro24_index02.jpg') }}" alt="">
+          <div class="caption">
+            <h4><strong>Szybki podgląd</strong></h4>
+            <p align="justify">Automatyzacja procesów pozwalana na natychmiastowy podgląd oraz analizę kosztów i przychodów według okresu rozliczeniowego.</p>
+          </div>
+          <p>
+            <a href='{{ url("register") }}' class="btn btn-primary">Dowiedz się więcej!</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+    
+
+</div>
+
+{% endblock %}

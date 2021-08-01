@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Zestawienie miesięczne za okres: {{ data }}</h3>
+        </div>
+        <div class="panel-body">
+        
+        <!-- Table -->
+        <table class="table">
+            <tr>
+                <th>#</th>
+                <th class="col-md-2">{{ knp_pagination_sortable(pagination, 'Data', 'data')}}</th>
+                <th class="col-md-2">{{ knp_pagination_sortable(pagination, 'Faktura', 'faktura')}}</th>
+                <th colspan="2" class="col-md-2 text-center">{{ knp_pagination_sortable(pagination, 'Kwota', 'kwota')}}</th>
+                <th class="col-md-2">{{ knp_pagination_sortable(pagination, 'Rodzaj', 'rodzaj')}}</th>
+                <th class="col-md-2">{{ knp_pagination_sortable(pagination, 'Uwagi', 'uwagi')}}</th>
+                <th class="col-md-2">Akcja</th>
+            </tr>
+                {% for d in pagination %}
+            <tr> 
+                <td>{{ loop.index }}</td>
+                <td>{{ d.data | date("Y-m-d") }}</td>
+                <td>{{ d.faktura }}</td>
+                <!-- podział kwoty na komórki: lewa dodatnia, prawa ujemna -->
+				{% if d.kwota < 0 %}
+				<td></td>
+				<td class="text-danger text-right">{{ d.kwota | number_format(2, ',', ' ') }}
+				zł</td>
+				{% else %}
+				<td class="text-right">{{ d.kwota | number_format(2, ',', ' ') }} zł</td>
+				<td></td>
+				{% endif %}
+                <td class="text-uppercase {{ d.rodzaj | rodzajEwidencjaStyleDokument}}">{{ d.rodzaj }}</td>
+                <td>{{ d.uwagi }}</td>
+                <td>
+                    <a href="{{ url("dokumenty_details", {"id": d.id}) }}">
+						<button type="button" class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-search"></span>
+							Info</button>
+					</a>
+					<a href="{{ url("dokumenty_edytuj", {"id": d.id})}}">
+						<button type="button" class="btn btn-primary btn-sm">
+							<span class="glyphicon glyphicon-pencil"></span>
+							Edytuj</button>
+					</a>
+                </td>
+            </tr>
+                {% endfor %}
+
+        </table>
+
+                <a class="btn btn-default" href="{{ url("dokumenty_index") }}"><span class="glyphicon glyphicon-arrow-left"></span> Powrót</a>
+            
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+	<div class="panel-heading">Podsumowanie miesięczne</div>
+	<table class="table">
+		<tr class="text-right">
+			{% for q in sumaWszystkie %}
+				<td class="col-md-2">
+					<strong>Razem</strong>
+				</td>
+				<td class="col-md-2">
+					<strong>{{ q.1 | number_format(2, ',', ' ')}}
+						zł</strong>
+				</td>
+
+				{# ///// do skasowania #}
+				{% for q2 in sumaRodzaj %}
+				{% if q2.1 < 0 %}
+				<td class="text-right text-danger">
+				{% else %}
+				<td class="text-right">
+				{% endif %}
+					{{q2.rodzaj}}
+					</td>
+				<td {{ q2.1 | kwotaStyleDokument }}>{{ q2.1 | number_format(2, ',', ' ')}}</td>
+				{% endfor %} 
+				<td></td>
+				<td></td>
+			{% endfor %}
+				{# ///// do skasowania #}
+
+		{# ///// do odtworzenia #}
+		{# {% for q2 in sumaRodzaj %}
+			{% if q2.1 < 0 %}
+				<tr class="text-right text-danger">
+				{% else %}
+					<tr class="text-right">
+					{% endif %}
+					<td class="col-md-2"></td>
+					<td class="col-md-2">{{ q2.1 | number_format(2, ',', ' ')}}
+						zł</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			{% endfor %} #}
+			{# ///// do odtworzenia #}
+		</table>
+</div>
+
+    <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+    </div>
+
+{% endblock %}

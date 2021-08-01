@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript">
+    $("#phone").inputmask("999.999.9999", {showMaskOnFocus: false, showMaskOnHover: false});
+  </script>
+</head>
+<body>
+  <form enctype="multipart/form-data" method="post" id="feedback">
+    <div class="kontakt-form-row form-group">
+        <div class="kontakt-form">
+            <label for="phone" class="element">
+                phone<span class="required">*</span>
+            </label>
+        </div>
+        <div class="kontakt-form">
+            <div class="element">
+                <input id="phone" name="phone" type="text" maxlength="20" class="form-control" required="required" data-remote="/validator.php">
+            </div>
+        </div>
+        <div class="help-block with-errors"></div>
+    </div>
+</form>
+
+</body>
+</html>

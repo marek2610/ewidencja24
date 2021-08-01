@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+  <div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Strona testowa bez powiązania</div>
+
+  <!-- Table -->
+  <table class="table">
+
+{% for d in query  %}
+        <tr>
+        
+          <td>{{loop.index}}.</td>
+          <td>
+          {# <a href="{{ url('dokumenty_test_2', {'id': d.0} ) }}">
+          </a> #}
+            {{d.data | date("Y-m-d") }}
+          
+          
+          </td>
+          <td>{{d.kwota}}</td>
+          <td>{{d.faktura}}</td>
+
+        </tr>
+{% endfor %}
+        
+  </table>
+</div>
+  
+  
+  
+
+{% endblock %}

@@ -1,0 +1,109 @@
+<?php //%255B06cf952f9335bfb438be31d39c8cab0c%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Query\\ParserResult'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ParserResult')),
+        clone ($p['Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor')),
+        clone ($p['Doctrine\\ORM\\Query\\ResultSetMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ResultSetMapping')),
+    ],
+    null,
+    [
+        'Doctrine\\ORM\\Query\\ParserResult' => [
+            '_sqlExecutor' => [
+                $o[1],
+            ],
+            '_resultSetMapping' => [
+                $o[2],
+            ],
+            '_parameterMappings' => [
+                [
+                    'query' => [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                    ],
+                    'status' => [
+                        5,
+                    ],
+                    'owner' => [
+                        6,
+                    ],
+                ],
+            ],
+        ],
+        'Doctrine\\ORM\\Query\\Exec\\AbstractSqlExecutor' => [
+            '_sqlStatements' => [
+                1 => 'SELECT d0_.id AS id_0, d0_.data AS data_1, d0_.kwota AS kwota_2, d0_.faktura AS faktura_3, d0_.rodzaj AS rodzaj_4, d0_.uwagi AS uwagi_5, d0_.utworzony AS utworzony_6, d0_.modyfikacja AS modyfikacja_7, d0_.status AS status_8, d0_.data_short AS data_short_9, d0_.owner_id AS owner_id_10 FROM dokument d0_ WHERE (d0_.data LIKE ? OR d0_.kwota LIKE ? OR d0_.faktura LIKE ? OR d0_.rodzaj LIKE ? OR d0_.uwagi LIKE ?) AND d0_.status = ? AND d0_.owner_id = ? ORDER BY d0_.data DESC',
+            ],
+        ],
+        'stdClass' => [
+            'aliasMap' => [
+                2 => [
+                    'd' => 'App\\Entity\\Dokument',
+                ],
+            ],
+            'fieldMappings' => [
+                2 => [
+                    'id_0' => 'id',
+                    'data_1' => 'data',
+                    'kwota_2' => 'kwota',
+                    'faktura_3' => 'faktura',
+                    'rodzaj_4' => 'rodzaj',
+                    'uwagi_5' => 'uwagi',
+                    'utworzony_6' => 'utworzony',
+                    'modyfikacja_7' => 'modyfikacja',
+                    'status_8' => 'status',
+                    'data_short_9' => 'dataShort',
+                ],
+            ],
+            'typeMappings' => [
+                2 => [
+                    'owner_id_10' => 'integer',
+                ],
+            ],
+            'entityMappings' => [
+                2 => [
+                    'd' => null,
+                ],
+            ],
+            'metaMappings' => [
+                2 => [
+                    'owner_id_10' => 'owner_id',
+                ],
+            ],
+            'columnOwnerMap' => [
+                2 => [
+                    'id_0' => 'd',
+                    'data_1' => 'd',
+                    'kwota_2' => 'd',
+                    'faktura_3' => 'd',
+                    'rodzaj_4' => 'd',
+                    'uwagi_5' => 'd',
+                    'utworzony_6' => 'd',
+                    'modyfikacja_7' => 'd',
+                    'status_8' => 'd',
+                    'data_short_9' => 'd',
+                    'owner_id_10' => 'd',
+                ],
+            ],
+            'declaringClasses' => [
+                2 => [
+                    'id_0' => 'App\\Entity\\Dokument',
+                    'data_1' => 'App\\Entity\\Dokument',
+                    'kwota_2' => 'App\\Entity\\Dokument',
+                    'faktura_3' => 'App\\Entity\\Dokument',
+                    'rodzaj_4' => 'App\\Entity\\Dokument',
+                    'uwagi_5' => 'App\\Entity\\Dokument',
+                    'utworzony_6' => 'App\\Entity\\Dokument',
+                    'modyfikacja_7' => 'App\\Entity\\Dokument',
+                    'status_8' => 'App\\Entity\\Dokument',
+                    'data_short_9' => 'App\\Entity\\Dokument',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

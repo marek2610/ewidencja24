@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Zestawienie miesięczne</h3>
+        </div>
+        <div class="panel-body">
+        
+        <!-- Table -->
+        <table class="table">
+            <tr>
+                <th class="col-md-1">#</th>
+                <th class="col-md-3">Rok / Miesiąc</th>
+                <th class="col-md-3">Kwota miesięcznych obrotów</th>
+                <th class="col-md-3">Miesięczny bilans</th>
+                <th class="col-md-3">Akcja</th>
+            </tr>
+                {% for q in pagination  %}
+            <tr> 
+                <td>{{ loop.index }}.</td>
+                <td>{{ q.data }}</td>
+                <td {{ q.1 | kwotaStyleDokument }}>{{ q.1 | number_format(2, ',', ' ')}} zł</td>
+                <td {{ q.1 | kwotaStyleDokument }}> {{ q.1 | kwotaBilansDokument}}</td>
+                <td>
+                    <a href="{{ url('dokumenty_danemiesiac', {'data': q.data }) }}">
+                        <button type="button" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-search"></span>
+                            Info
+                        </button>
+                    </a>
+                    <a href="{{ url('dokumenty_zbiorcze_miesiac', {'data': q.data }) }}">
+                        <button type="button" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-download-alt"></span>
+                            Pobierz
+                        </button>
+                    </a>
+                </td>
+            </tr>
+                {% endfor %}
+
+        </table>
+            <a class="btn btn-default" href="{{ url("dokumenty_index") }}"><span class="glyphicon glyphicon-arrow-left"></span> Powrót</a>
+        </div>
+    </div>
+
+    <!-- Default panel contents -->
+    <div class="panel panel-primary">
+        <div class="panel-heading">Podsumowanie - wszystkiw wpisy</div>
+        <table class="table">
+            <tr class="text-right">
+                {% for q in sumaWszystkie %}
+                    <td class="col-md-2">
+                        <strong>Razem</strong>
+                    </td>
+                    <td class="col-md-2">
+                        <strong>{{ q.1 | number_format(2, ',', ' ')}}
+                            zł</strong>
+                    </td>
+
+                    {# ///// do skasowania #}
+                    {% for q2 in sumaRodzaj %}
+                        {% if q2.1 < 0 %}
+                            <td class="text-right text-danger">
+                            {% else %}
+                                <td class="text-right">
+                                {% endif %}
+                                {{q2.rodzaj}}
+                            </td>
+                            <td {{ q2.1 | kwotaStyleDokument }}>{{ q2.1 | number_format(2, ',', ' ')}}</td>
+                        {% endfor %}
+                        <td></td>
+                        <td></td>
+                    {% endfor %}
+                </table>
+            </tr>
+        </div>
+
+
+    <div class="navigation text-center">
+  	{{ knp_pagination_render(pagination) }}
+	</div>
+
+{% endblock %}

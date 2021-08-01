@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+  ...::: Strona nie istnieje :::...
+{% endblock %}
+
+{% block body %}
+  <h1>
+    Page not found
+  </h1>
+  <p>
+    Strona nie istnieje.
+  </p>
+  <p>
+    Kod błędu: {{ status_code }}
+  </p>
+  <p>
+    Wiadomość błędu: {{ status_text }}
+  </p>
+  <p>
+    Komunikat błędu: {{ exception.message }}
+  </p>
+  {{ dump() }}
+{% endblock %}

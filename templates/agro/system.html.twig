@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">System</h3>
+        </div>
+
+        <div class="list-group">
+            <div class="list-group-item ">
+                <h4 class="list-group-item-heading">E-widencja24 - Uproszczona ewidencja przychodów i rozchodów</h4>
+            </div >
+        </div>
+
+
+        <div class="panel-body text-justify">           
+            <p>Aplikacja <strong> E-widencja24 - Uproszczona ewidencja przychodów i rozchodów </strong>przeznaczona jest dla beneficjentów Programu Rozwoju Obszarów Wiejskich 2014-2020 - PROW 2014-2020 oraz Programu Operacyjnego "Rybactwo i Morze" na lata 2014-2020 - PO RYBY 2014-2020 a także wszystkich innych, gdzie wymagane jest prowadzenie uproszczonej ewidencji księgowej. Dlatego też format, sposób, oraz zasady ewidencji są zgodne z procedurami wymaganymi przez Agencję Restrukturyzacji i Modernizacji Rolnictwa, opisanymi w Załączniku Nr 3 do Rozporządzenia Ministra Rolnictwa i Rozwoju Wsi z dnia 13 lipca 2015 r. (Dz. U. poz. 982).
+            </p>
+            <p>Elektroniczna wersja aplikacji gwarantuje bezpieczeństwo przed utratą papierowych wersji raportów. Raz wprowadzone wpisy zdarzeń gospodarczych pozostają w aplikacji i w sposób ciągły są dostępne dla beneficjenta. Łatwość ich edycji, korekty czy też usunięcia, natychmiast powoduje zmiany w raportach i statystykach.</p>
+            <p>System nie wymaga instalacji. Zintegrowany jest z każdym systemem operacyjnym. Uruchomić go można pod Windowsem, Linuxem, czy też MaC. Dostosowany jest do pracy na każdym urządzeniu: komórka, tablet, desktop. Jedyne co należy wykonać do zarejestrować się w aplikacji <strong> E-widencja24 - Uproszczona ewidencja przychodów i rozchodów</strong>.
+            </p>
+            <p>Praca z aplikacją jest intuicyjna i możliwa zaraz po rejestracji. <strong> E-widencja24.pl - Uproszczona ewidencja przychodów i rozchodów</strong> posiada w swojej strukturze moduł dodawania zdarzeń księgowych, filtracji, generowanie miesięcznych oraz zbiorczego zestawienia księgowego w gospodarstwie. System wyposażony jest w opcję <i>Szukaj</i>, dzięki której użytkownik bardzo szybko odnajdzie interesujący go dokument. Struktura aplikacji pozwalana na automatyczne sortowanie wydatków oraz wpływów bez konieczności analizy terminów.
+            </p>
+            <p>
+            Spróbuj a zrezygnujesz z prowadzenia własnych zestawień w arkuszach kalkulacyjnych czy prostych edytorach tekstu. Zarejestruj się, zaloguj i nie trać więcej czasu dzięki systemowi <strong>E-widencja24 - Uproszczona ewidencja przychodów i rozchodów</strong>.
+            </p>
+        </div>
+
+        <div class="list-group">
+            <div class="list-group-item ">
+
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <img src="{{ asset('img/agro24_02.png') }}" alt="Agro24"/>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <img src="{{ asset('img/agro24_05.jpg') }}" alt="Agro24">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <img src="{{ asset('img/agro24_04.jpg') }}" alt="Agro24">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+
+ 
+        <div class="clearfix"></div>
+        {# <div class="panel-footer text-center">Zarejestruj się, zaloguj i nie trać więcej czasu dzięki Agro24 - Uproszczona ewidencja przychodów i rozchodów.</div>
+    </div> #}
+
+{% endblock %}

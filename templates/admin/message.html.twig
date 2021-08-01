@@ -1,0 +1,68 @@
+{% extends 'admin/base2.html.twig' %}
+
+{% block message %}
+
+	<div class="widget-box transparent">
+		<div class="widget-header widget-header-large">
+			<h3 class="widget-title grey lighter">
+				<i class="ace-icon fa fa-envelope green"></i>
+				Message
+			</h3>
+		</div>
+	</div>
+
+	<table id="simple-table" class="table  table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Imię</th>
+				<th>Nazwisko</th>
+				<th>email</th>
+				<th>Temat</th>
+				<th>
+					<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+					Data utorzenia
+				</th>
+				<th>Status</th>
+				<th>Akcje</th>
+			</tr>
+		</thead>
+
+		{% for w in wiadomosci %}
+			<tbody>
+				<tr>
+					<td>{{ loop.index }}</td>
+					<td>{{ w.imie }}</td>
+					<td>{{ w.nazwisko }}</td>
+					<td>{{ w.email }}</td>
+					<td>{{ w.temat }}</td>
+					<td>{{ w.dataUtworzenia | date("Y-m-d H:s") }}</td>
+					<td class="hidden-480">
+						<span class="label label-sm label-{{ w.status | statusStyleMessage }}"> {{ w.status | statusStyleOpis }}</span>
+					</td>
+					<td>
+						<div class="hidden-sm hidden-xs btn-group">
+							<button class="btn btn-xs btn-success">
+								<i class="ace-icon fa fa-check bigger-120"></i>
+							</button>
+
+							<button class="btn btn-xs btn-info">
+								<i class="ace-icon fa fa-pencil bigger-120"></i>
+							</button>
+
+							<button class="btn btn-xs btn-danger">
+								<i class="ace-icon fa fa-trash-o bigger-120"></i>
+							</button>
+
+							<button class="btn btn-xs btn-warning">
+								<i class="ace-icon fa fa-flag bigger-120"></i>
+							</button>
+						</div>
+
+					</td>
+				</tr>
+			</tbody>
+		{% endfor %}
+	</table>
+{% endblock %}
+
